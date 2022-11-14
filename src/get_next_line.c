@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:45:39 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/13 22:50:47 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/14 14:02:02 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*get_one_line(int fd, char *offset_str)
 
 	//?	file_already_red = malloc();
 	*offset_str = "";
+	*first_line = "";
 	//offset_str = read_file(fd, BUFFER_SIZE);
 	while (offset_str)
 	{
@@ -46,22 +47,22 @@ char	*get_one_line(int fd, char *offset_str)
 		if (offset) //if \n exists in offset_str
 		{
 			first_line = ft_substr(offset_str, 0, offset);
+			offset_str = offset_str + ft_strlen(first_line);
 			return (first_line);
 		}
 		else//???
-			first_line = offset_str;
+			first_line = ft_strjoin(first_line, offset_str);
 			//?
-		offset_str = offset_str + ft_strlen(first_line);
 	}
 	// return (first_line);
-	return
+	return (NULL);
 }
 
 char	*read_file(int fd, int count)
 {
 	char	*buffer;
 
-	buffer = malloc(count + 1);
+	buffer = malloc(count);
 	read(fd, buffer, count);
 	return (buffer);
 }
