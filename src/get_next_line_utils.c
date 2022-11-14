@@ -6,11 +6,23 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:03:38 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/13 22:54:27 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/14 16:01:30 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (*(str + i) != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -38,7 +50,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str_join);
 }
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strchr(const char *s, int c)
 {
 	size_t	i;
 	size_t	s_len;
@@ -47,15 +59,15 @@ char	*ft_strchr(const char *s, int c)
 	str = (char *)s;
 	s_len = ft_strlen(str);
 	if ((char) c == 0)
-		return (&str[s_len]);
+		return (s_len);
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == (char) c)
-			return (&str[i]);
+			return (i);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
