@@ -1,4 +1,4 @@
-#include "../src/get_next_line.h"
+#include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
 #ifndef BUFFER_SIZE
@@ -14,12 +14,12 @@ int	main(void)
 	char	*buffer;
 	char	*buffer_for_size;
 	int		ret_val_read_until_eof; //?return 0?
-	int		ret_val_count_zero;
+	// int		ret_val_count_zero;
 	int		ret_val_buffer_size;
 
 	fd = open("test.txt", O_RDONLY);
 	printf("get %d buffersize from fileno %d\n", BUFFER_SIZE, fd);
-	
+
 	buffer = (char *)malloc(BUFFER_SIZE * sizeof(char));
 	buffer_for_size = (char *)malloc(BUFFER_SIZE * sizeof(char));
 	if (!buffer || !buffer_for_size)

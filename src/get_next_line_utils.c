@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:03:38 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/14 16:01:30 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/14 18:51:32 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ size_t	ft_strchr(const char *s, int c)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

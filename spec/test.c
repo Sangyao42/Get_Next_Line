@@ -12,7 +12,7 @@ int	main(void)
 	// return (0);
 	// printf("%zd\n", write(1, "abcde", 0));
 	int	fd;
-	fd = open("text.txt", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
 	// printf("%s", get_next_line(fd));
 	// printf("%s\n", get_next_line(fd));

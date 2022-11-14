@@ -1,17 +1,21 @@
-NAME = test.o
+NAME = $(TEST:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-TEST = test.c
+TEST := test.c
 SRC_DIR = ../src
 SRCS = $(SRC_DIR)/get_next_line.c\
 		$(SRC_DIR)/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
+B_F = BUFFER_SIZE=42
 
 debug: CFLAGS += -g
 debug: all
 
-print: $(OBJS)
-	echo $(OBJS)
+check: CFLAGS += -D $(B_F)
+check: all
+
+print: $(TEST)
+	echo $(TEST)
 
 all: $(NAME)
 
