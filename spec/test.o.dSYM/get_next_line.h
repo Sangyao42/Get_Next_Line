@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:42:01 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/15 16:22:56 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/16 15:26:52 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s1);
 
 #endif

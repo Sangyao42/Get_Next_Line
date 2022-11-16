@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:42:01 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/15 17:27:58 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/16 20:07:22 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 char	*get_next_line(int fd);
 char	*get_offset_str(int fd, char *offset_str);
 char	*get_one_line(int fd, char **offset_str);
-char	*read_file(int fd, int count);
+char	*read_file(int fd, size_t count);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *s1, char const *s2);
 size_t	ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s1);
 
 #endif
