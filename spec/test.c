@@ -5,17 +5,7 @@
 
 #include "stdlib.h"
 
-void	change(char *ptr)
-{
-
-	ptr[0] = 'A';
-	ptr[1] = 'A';
-	ptr[2] = '\0';
-	// ptr = ft_substr("HELLOOOO", 0, 5);
-
-}
-
-int	main(void)
+int	main(int argv, char **argc)
 {
 	// printf("%d\n", STDIN_FILENO);
 	// int fd;
@@ -25,32 +15,37 @@ int	main(void)
 	// printf("%zd\n", write(1, "abcde", 0));
 
 	int	fd;
-	fd = open("test.txt", O_RDONLY);
+	if (argv < 0)
+	{
+		return (1);
+	}
+	fd = open(argc[1], O_RDONLY);
+	printf("fd: %d\n", fd);
 	printf("the final result: %sFINAL\n", get_next_line(fd));
 	printf("\n");
 	printf("the final result: %sFINAL\n", get_next_line(fd));
 	printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
-	// printf("\n");
-	// printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
+	printf("\n");
+	printf("the final result: %sFINAL\n", get_next_line(fd));
 	// printf("the final result%s", get_next_line(fd));
 	// printf("the final result%s", get_next_line(fd));
 	// printf("the final result%s", get_next_line(fd));
@@ -67,6 +62,6 @@ int	main(void)
 	// ptr = malloc(sizeof(char) * 10);
 	// change(ptr);
 	// printf("PTR = %s\n", ptr);
-
+	return (0);
 }
 
