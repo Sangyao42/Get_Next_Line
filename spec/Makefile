@@ -6,7 +6,7 @@ SRC_DIR = ../src
 SRCS = $(SRC_DIR)/get_next_line.c\
 		$(SRC_DIR)/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
-B_F = BUFFER_SIZE=5
+B_F = BUFFER_SIZE=1
 
 debug: CFLAGS += -g
 debug: all

@@ -6,37 +6,37 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/18 19:43:31 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/21 21:10:59 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	*ft_read(int fd, ssize_t count)
-{
-	char		*buffer;
-	ssize_t		readed;
+// char	*ft_read(int fd, ssize_t count)
+// {
+// 	char		*buffer;
+// 	ssize_t		readed;
 
-	buffer = (char *)malloc(sizeof(char) * (count + 1));
-	if (!buffer)
-		return (NULL);
-	readed = read(fd, buffer, count);
-	if (readed == -1)
-	{
-		free(buffer);
-		buffer = NULL;
-	}
-	else if (readed < count)
-	{
-		*(buffer + readed) = 0;
-		printf("a buffertest:%sENDA\n", buffer);
-	}
+// 	buffer = (char *)malloc(sizeof(char) * (count + 1));
+// 	if (!buffer)
+// 		return (NULL);
+// 	readed = read(fd, buffer, count);
+// 	if (readed == -1)
+// 	{
+// 		free(buffer);
+// 		buffer = NULL;
+// 	}
+// 	else if (readed < count)
+// 	{
+// 		*(buffer + readed) = 0;
+// 		printf("a buffertest:%sENDA\n", buffer);
+// 	}
 
-	*(buffer + count) = 0;
-	printf("b bufferstest:%sENDB\n", buffer);
-	return (buffer);
-}
+// 	*(buffer + count) = 0;
+// 	printf("b bufferstest:%sENDB\n", buffer);
+// 	return (buffer);
+// }
 
 // char	*read_and_accumulate(char *offset_str, int fd)
 // {
@@ -97,6 +97,12 @@ char	*ft_read(int fd, ssize_t count)
 // 	return (offset_str);
 // }
 
+// void	*buffer_free(void *buffer)
+// {
+// 	free(buffer);
+// 	return (NULL);
+// }
+
 char	*read_and_accumulate(int fd, char *offset_str)
 {
 	char	*buffer;
@@ -105,24 +111,19 @@ char	*read_and_accumulate(int fd, char *offset_str)
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	red = 1;
-	while (ft_strchr(offset_str, '\n') == 0 && red)
+	while (ft_strchr(offset_str, '\n') == 0)
 	{
 		red = read(fd, buffer, BUFFER_SIZE);
 		if (red == -1)
-		{
-			free (buffer);
-			return (NULL);
-		}
-		// if (red == 0)
-		// 	break ;
+			return (free (buffer), NULL);
+		if (red == 0)
+			break ;
 		buffer[red] = '\0';
-		// printf("buffer: %s\n", buffer);
-		// printf("offsetstr before join: %s at %p\n", offset_str, offset_str);
 		offset_str = ft_strjoin(offset_str, buffer);
-		// printf("offsetstr after join: %s\n", offset_str);
+		if (!offset_str)
+			return (free (buffer), NULL);
 	}
-	free(buffer);
+	free (buffer);
 	return (offset_str);
 }
 
@@ -135,9 +136,17 @@ char	*get_first_line(char *offset_str)
 		return (NULL);
 	len = ft_strchr(offset_str, '\n');
 	if (len)
+	{
 		line = ft_substr(offset_str, 0, len);
+		if (!line)
+			return (NULL);
+	}
 	else
+	{
 		line = ft_strdup(offset_str);
+		if (!line)
+			return (NULL);
+	}
 	return (line);
 }
 
@@ -149,11 +158,19 @@ char	*get_offset_str(char *offset_str)
 		return (NULL);
 	len = ft_strchr(offset_str, '\n');
 	if (len)
+	{
+		// printf("offset_str + len: %sEND\n", offset_str + len);
 		offset_str = ft_strdup(offset_str + len);
+		if (!offset_str)
+			return (NULL);
+	}
 	else
 	{
-		free(offset_str);
-		return (NULL);
+		if (offset_str)
+		{
+			free(offset_str);
+			return (NULL);
+		}
 	}
 	return (offset_str);
 }
@@ -163,19 +180,12 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*offset_str;
 
-	// // offset_str = (char *)malloc(1);
-	// printf("address of offset_str when initialized: %p\n", &offset_str);
-	// line = get_one_line(fd, &offset_str);
-	// printf("add of line: %p\n", line);
-
-	// // printf("BUFFER SIZE : %i\n", BUFFER_SIZE);
-	// // printf("REST : %sEND\n", offset_str);
-	// // printf("RESULT : %s\n", line);
-	// free(offset_str - ft_strlen(line));
-	// return (line);
+	// printf("offset_str0: %s\n", offset_str);
 	offset_str = read_and_accumulate(fd, offset_str);
+	// printf("offset_str1: %s\n", offset_str);
 	line = get_first_line(offset_str);
+	// printf("offset_str2: %s\n", offset_str);
 	offset_str = get_offset_str(offset_str);
-
+	// printf("offset_str3: %s\n", offset_str);
 	return (line);
 }
