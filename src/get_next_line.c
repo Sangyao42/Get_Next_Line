@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/21 21:10:59 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:57:23 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,10 @@ char	*read_and_accumulate(int fd, char *offset_str)
 		if (red == -1)
 			return (free (buffer), NULL);
 		if (red == 0)
+		{
+			// printf("offset_str: %s\n", )
 			break ;
+		}
 		buffer[red] = '\0';
 		offset_str = ft_strjoin(offset_str, buffer);
 		if (!offset_str)
@@ -153,6 +156,7 @@ char	*get_first_line(char *offset_str)
 char	*get_offset_str(char *offset_str)
 {
 	size_t	len;
+	char	*ptr;
 
 	if (!offset_str)
 		return (NULL);
@@ -160,17 +164,19 @@ char	*get_offset_str(char *offset_str)
 	if (len)
 	{
 		// printf("offset_str + len: %sEND\n", offset_str + len);
+		ptr = offset_str;
 		offset_str = ft_strdup(offset_str + len);
+		free(ptr);
 		if (!offset_str)
 			return (NULL);
 	}
 	else
 	{
-		if (offset_str)
-		{
+		// if (offset_str)
+		// {
 			free(offset_str);
 			return (NULL);
-		}
+		// }
 	}
 	return (offset_str);
 }

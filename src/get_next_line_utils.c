@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:03:38 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/21 21:14:44 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/21 21:39:31 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char	*ft_strdup(char const *s1)
 	if (!dup)
 		return (NULL);
 	if (!*s1)
-		return (NULL);
+		return (free(dup), NULL);
 	i = 0;
 	while (s1[i] != '\0')
 	{
