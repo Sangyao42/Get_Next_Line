@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/21 22:57:23 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:44:53 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,6 @@
 // 	return (offset_str);
 // }
 
-// void	*clear(char *buf)
-// {
-// 	free(buf);
-// 	return (NULL);
-// }
-
 // char	*read_and_accumulate(char *offset_str, int fd)
 // {
 // 	char	*buffer;
@@ -97,12 +91,6 @@
 // 	return (offset_str);
 // }
 
-// void	*buffer_free(void *buffer)
-// {
-// 	free(buffer);
-// 	return (NULL);
-// }
-
 char	*read_and_accumulate(int fd, char *offset_str)
 {
 	char	*buffer;
@@ -115,12 +103,12 @@ char	*read_and_accumulate(int fd, char *offset_str)
 	{
 		red = read(fd, buffer, BUFFER_SIZE);
 		if (red == -1)
-			return (free (buffer), NULL);
-		if (red == 0)
 		{
-			// printf("offset_str: %s\n", )
-			break ;
+			free(offset_str);
+			return (free (buffer), NULL);
 		}
+		if (red == 0)
+			break ;
 		buffer[red] = '\0';
 		offset_str = ft_strjoin(offset_str, buffer);
 		if (!offset_str)
@@ -163,7 +151,6 @@ char	*get_offset_str(char *offset_str)
 	len = ft_strchr(offset_str, '\n');
 	if (len)
 	{
-		// printf("offset_str + len: %sEND\n", offset_str + len);
 		ptr = offset_str;
 		offset_str = ft_strdup(offset_str + len);
 		free(ptr);
@@ -172,11 +159,8 @@ char	*get_offset_str(char *offset_str)
 	}
 	else
 	{
-		// if (offset_str)
-		// {
-			free(offset_str);
-			return (NULL);
-		// }
+		free(offset_str);
+		return (NULL);
 	}
 	return (offset_str);
 }
