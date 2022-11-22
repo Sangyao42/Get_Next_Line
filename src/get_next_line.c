@@ -6,12 +6,12 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/22 18:21:47 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/22 20:35:57 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 // char	*ft_read(int fd, ssize_t count)
 // {
@@ -170,6 +170,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*offset_str;
 
+	if (fd == -1 || BUFFER_SIZE <= 0)
+		return (NULL);
 	// printf("offset_str0: %s\n", offset_str);
 	offset_str = read_and_accumulate(fd, offset_str);
 	// printf("offset_str1: %s\n", offset_str);
