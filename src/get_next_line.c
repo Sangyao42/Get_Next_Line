@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/22 13:44:53 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:21:47 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,14 +129,14 @@ char	*get_first_line(char *offset_str)
 	if (len)
 	{
 		line = ft_substr(offset_str, 0, len);
-		if (!line)
-			return (NULL);
+		// if (!line)
+		// 	return (NULL);
 	}
 	else
 	{
 		line = ft_strdup(offset_str);
-		if (!line)
-			return (NULL);
+		// if (!line)
+		// 	return (NULL);
 	}
 	return (line);
 }
@@ -154,8 +154,8 @@ char	*get_offset_str(char *offset_str)
 		ptr = offset_str;
 		offset_str = ft_strdup(offset_str + len);
 		free(ptr);
-		if (!offset_str)
-			return (NULL);
+		// if (!offset_str)
+		// 	return (NULL);
 	}
 	else
 	{
