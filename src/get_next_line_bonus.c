@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:33:11 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 12:06:32 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 21:29:43 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,22 @@ static char	*get_offset_str(char *offset_str)
 	return (offset_str);
 }
 
+/**
+ * Macro: int FD_SETSIZE
+	The value of this macro is the maximum number of file descriptors
+	that a fd_set object can hold information about.
+	On systems with a fixed maximum number, FD_SETSIZE is at least that number.
+	On some systems, including GNU, there is no absolute limit
+	on the number of descriptors open,
+	but this macro still has a constant value
+	which controls the number of bits in an fd_set;
+	if you get a file descriptor with a value as high as FD_SETSIZE,
+	you cannot put that descriptor into an fd_set.
+*/
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*offset_str[MAX_FD];
+	static char	*offset_str[FD_SETSIZE];
 
 	if (fd == -1 || BUFFER_SIZE <= 0)
 		return (NULL);

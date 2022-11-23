@@ -6,91 +6,24 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 12:05:20 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 22:58:14 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-// #include <stdio.h>
 
-// char	*ft_read(int fd, ssize_t count)
-// {
-// 	char		*buffer;
-// 	ssize_t		readed;
-
-// 	buffer = (char *)malloc(sizeof(char) * (count + 1));
-// 	if (!buffer)
-// 		return (NULL);
-// 	readed = read(fd, buffer, count);
-// 	if (readed == -1)
-// 	{
-// 		free(buffer);
-// 		buffer = NULL;
-// 	}
-// 	else if (readed < count)
-// 	{
-// 		*(buffer + readed) = 0;
-// 		printf("a buffertest:%sENDA\n", buffer);
-// 	}
-
-// 	*(buffer + count) = 0;
-// 	printf("b bufferstest:%sENDB\n", buffer);
-// 	return (buffer);
-// }
-
-// char	*read_and_accumulate(char *offset_str, int fd)
-// {
-// 	char	*buffer;
-
-// 	// buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-
-// 	while (ft_strchr(offset_str, '\n') == 0)
-// 	{
-// 		buffer = ft_read(fd, BUFFER_SIZE);
-// 		// if (!buffer)
-// 		// 	return (NULL);
-// 		if (*buffer && ft_strlen(buffer) <= BUFFER_SIZE)
-// 			// offset_str =;//lose last line
-// 			offset_str = ft_strjoin(offset_str, buffer);
-// 		else
-// 		{
-// 			free (buffer);
-// 			return (NULL);
-// 		}
-// 	}
-// 	free(buffer);
-// 	return (offset_str);
-// }
-
-// char	*read_and_accumulate(char *offset_str, int fd)
-// {
-// 	char	*buffer;
-// 	int		readed;
-
-// 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-// 	if (!buffer)
-// 		return (NULL);
-// 	readed = read(fd, buffer, BUFFER_SIZE);
-// 	if (readed)
-// 		offset_str = ft_strjoin(offset_str, buffer);
-// 	while (ft_strchr(offset_str, '\n') == 0 && readed)
-// 	{
-// 		if (readed == -1)
-// 			return (clear(buffer));
-// 		buffer[readed] = '\0';
-// 		if (readed < BUFFER_SIZE)
-// 			break ;
-// 		if (!ft_strchr(offset_str, '\n'))
-// 		{
-// 			readed = read(fd, buffer, BUFFER_SIZE);
-// 			if(readed)
-// 				offset_str = ft_strjoin(offset_str, buffer);
-// 		}
-// 	}
-// 	free(buffer);
-// 	return (offset_str);
-// }
-
+/**
+ * @brief read the files into buffer and
+ * join the previous offset_str with buffer, if there is no '\n' in offset_str
+ * @details If read() fails, offset_str and buffer should both be freed.
+ * If read() returns 0, which means no more bytes is red, break the loop
+ * and keep offset_str as how it was before.
+ * Set buffer[red] = '\0' to set the buffer red as a string
+ * for using ft_strjoin().
+ * Once buffer is joined to offset_str, buffer should be freed
+ * and the offset_str should be freed as well,
+ * which is accomplished in ft_strjoin() using free(s1).
+*/
 static char	*read_and_accumulate(int fd, char *offset_str)
 {
 	char	*buffer;
@@ -111,13 +44,16 @@ static char	*read_and_accumulate(int fd, char *offset_str)
 			break ;
 		buffer[red] = '\0';
 		offset_str = ft_strjoin(offset_str, buffer);
-		if (!offset_str)
-			return (free (buffer), NULL);
 	}
 	free (buffer);
 	return (offset_str);
 }
 
+/**
+ * @brief Return the first line seperated by '\n' from offset_str.
+ * @details If there is no '\n' in offset_str, return the value of offset_str,
+ * which means it returns the last line of the file without a newline.
+*/
 static char	*get_first_line(char *offset_str)
 {
 	char	*line;
@@ -127,20 +63,22 @@ static char	*get_first_line(char *offset_str)
 		return (NULL);
 	len = ft_strchr(offset_str, '\n');
 	if (len)
-	{
 		line = ft_substr(offset_str, 0, len);
-		// if (!line)
-		// 	return (NULL);
-	}
 	else
-	{
 		line = ft_strdup(offset_str);
-		// if (!line)
-		// 	return (NULL);
-	}
 	return (line);
 }
 
+/**
+ * @brief Store the string behind the '\n'
+ * @details If there is '\n' in offset_str, using ft_strdup() make a copy of
+ * the string starting from (offset_str + len) and free the previous offset_str
+ * using a pointer (first set a ptr points to previous offset_str,
+ * after ft_strdup(), free the ptr, which frees the previous offset_str).
+ * If there is no '\n' in offset_str, which means we reach the last line of
+ * the file, thus offset_str should be freed and make offset_str points to nowhere
+ * when finishing reading.
+*/
 static char	*get_offset_str(char *offset_str)
 {
 	size_t	len;
@@ -154,8 +92,6 @@ static char	*get_offset_str(char *offset_str)
 		ptr = offset_str;
 		offset_str = ft_strdup(offset_str + len);
 		free(ptr);
-		// if (!offset_str)
-		// 	return (NULL);
 	}
 	else
 	{
@@ -172,12 +108,8 @@ char	*get_next_line(int fd)
 
 	if (fd == -1 || BUFFER_SIZE <= 0)
 		return (NULL);
-	// printf("offset_str0: %s\n", offset_str);
 	offset_str = read_and_accumulate(fd, offset_str);
-	// printf("offset_str1: %s\n", offset_str);
 	line = get_first_line(offset_str);
-	// printf("offset_str2: %s\n", offset_str);
 	offset_str = get_offset_str(offset_str);
-	// printf("offset_str3: %s\n", offset_str);
 	return (line);
 }

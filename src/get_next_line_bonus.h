@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:21:05 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 12:06:42 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 21:26:47 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# ifndef MAX_FD
-#  define MAX_FD 10240 //check with command ulimit -a
-# endif
+//check with command ulimit -a
+// # ifndef MAX_FD
+// #  define MAX_FD 10240
+// # endif
 
 # include <unistd.h>
 # include <stdlib.h>
