@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:21:05 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/22 22:02:35 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 11:58:56 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef MAX_FD
-#  define MAX_FD 4
+#  define MAX_FD 10240
 # endif
 
 # include <unistd.h>

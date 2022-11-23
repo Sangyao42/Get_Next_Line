@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:20:24 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/22 20:20:52 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 12:01:46 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	}
 	str_join = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str_join)
-		return (free(s1), NULL);
+		return (NULL);
 	i = 0;
 	while (s1[i] != '\0')
 	{
