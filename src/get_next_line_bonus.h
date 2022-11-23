@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:21:05 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 11:58:56 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 12:06:42 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@
 # endif
 
 # ifndef MAX_FD
-#  define MAX_FD 10240
+#  define MAX_FD 10240 //check with command ulimit -a
 # endif
 
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*ft_read(int fd, ssize_t count);
-char	*read_and_accumulate(int fd, char *offset_str);
-char	*get_first_line(char *offset_str);
-char	*get_offset_str(char *offset_str);
 char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *str);

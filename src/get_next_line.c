@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/22 20:35:57 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 12:05:20 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@
 // 	return (offset_str);
 // }
 
-char	*read_and_accumulate(int fd, char *offset_str)
+static char	*read_and_accumulate(int fd, char *offset_str)
 {
 	char	*buffer;
 	int		red;
@@ -118,7 +118,7 @@ char	*read_and_accumulate(int fd, char *offset_str)
 	return (offset_str);
 }
 
-char	*get_first_line(char *offset_str)
+static char	*get_first_line(char *offset_str)
 {
 	char	*line;
 	size_t	len;
@@ -141,7 +141,7 @@ char	*get_first_line(char *offset_str)
 	return (line);
 }
 
-char	*get_offset_str(char *offset_str)
+static char	*get_offset_str(char *offset_str)
 {
 	size_t	len;
 	char	*ptr;

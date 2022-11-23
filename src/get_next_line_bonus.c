@@ -6,13 +6,13 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:33:11 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/22 21:29:01 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/23 12:06:32 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*read_and_accumulate(int fd, char *offset_str)
+static char	*read_and_accumulate(int fd, char *offset_str)
 {
 	char	*buffer;
 	int		red;
@@ -39,7 +39,7 @@ char	*read_and_accumulate(int fd, char *offset_str)
 	return (offset_str);
 }
 
-char	*get_first_line(char *offset_str)
+static char	*get_first_line(char *offset_str)
 {
 	char	*line;
 	size_t	len;
@@ -54,7 +54,7 @@ char	*get_first_line(char *offset_str)
 	return (line);
 }
 
-char	*get_offset_str(char *offset_str)
+static char	*get_offset_str(char *offset_str)
 {
 	size_t	len;
 	char	*ptr;
