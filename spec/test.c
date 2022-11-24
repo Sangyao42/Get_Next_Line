@@ -39,32 +39,32 @@ int main(void)
 /**
  * Testing for bonus part
 */
-	int		fd_bonus1;
-	char	*str_bonus1;
-	int		fd_bonus2;
-	char	*str_bonus2;
-	fd_bonus1 = open("test.txt", O_RDONLY);
-	fd_bonus2 = open("test.txt", O_RDONLY);
-	n = 0;
-	printf("fd_bonus1: %d\n", fd_bonus1);
-	printf("fd_bonus2: %d\n", fd_bonus2);
-	str_bonus1 = get_next_line(fd_bonus1);
-	str_bonus2 = get_next_line(fd_bonus2);
-	while (str_bonus1)
-	{
-		printf("the %dth line from fd_bonus1 %d: %sFINAL\n", (n + 1),fd_bonus1, str_bonus1);
-		free(str_bonus1);
-		str_bonus1 = get_next_line(fd_bonus1);
-		n++;
-	}
-	n = 0;
-	while (str_bonus2)
-	{
-		printf("the %dth line from fd_bonus2 %d: %sFINAL\n", (n + 1),fd_bonus2, str_bonus2);
-		free(str_bonus2);
-		str_bonus2 = get_next_line(fd_bonus2);
-		n++;
-	}
+	// int		fd_bonus1;
+	// char	*str_bonus1;
+	// int		fd_bonus2;
+	// char	*str_bonus2;
+	// fd_bonus1 = open("test.txt", O_RDONLY);
+	// fd_bonus2 = open("test.txt", O_RDONLY);
+	// n = 0;
+	// printf("fd_bonus1: %d\n", fd_bonus1);
+	// printf("fd_bonus2: %d\n", fd_bonus2);
+	// str_bonus1 = get_next_line(fd_bonus1);
+	// str_bonus2 = get_next_line(fd_bonus2);
+	// while (str_bonus1)
+	// {
+	// 	printf("the %dth line from fd_bonus1 %d: %sFINAL\n", (n + 1),fd_bonus1, str_bonus1);
+	// 	free(str_bonus1);
+	// 	str_bonus1 = get_next_line(fd_bonus1);
+	// 	n++;
+	// }
+	// n = 0;
+	// while (str_bonus2)
+	// {
+	// 	printf("the %dth line from fd_bonus2 %d: %sFINAL\n", (n + 1),fd_bonus2, str_bonus2);
+	// 	free(str_bonus2);
+	// 	str_bonus2 = get_next_line(fd_bonus2);
+	// 	n++;
+	// }
 
 	// system("leaks test.o");
 	// char	*ptr;

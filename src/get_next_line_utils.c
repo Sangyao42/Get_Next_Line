@@ -6,11 +6,12 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:03:38 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 22:12:57 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/24 17:28:30 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdio.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -22,6 +23,16 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+/**
+ * @brief Join the previous offset_str with newly red buffer.
+ * Return the new joined offset_str.
+ * Before returning, free the previous offset_str.
+ * @details At first, the static char *offset_str points to NULL
+ * as default.
+ * So if the new offset_str = ft_strdup(offset_str + len) == '\0',
+ * it must be set as NULL to prepare for the next call of
+ * get_next_line() in ft_strdup().
+*/
 char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	i;
@@ -51,6 +62,12 @@ char	*ft_strjoin(char *s1, char const *s2)
 	return (free(s1), str_join);
 }
 
+/**
+ * @brief Find the if there is '\n' in offset_str.
+ * @return the index of the first character after char c.
+ * If no char *s, return 0.
+ * If no int c found, return 0 as well.
+*/
 size_t	ft_strchr(const char *s, int c)
 {
 	size_t	i;
@@ -101,6 +118,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
+/**
+ * @details if (!*s1) statement is linked to
+ * offset_str = ft_strdup(offset_str + len) in get_offset_str() function.
+ * If (offset_str + len) points to end of string, which is '\0',
+ * that happens when before '\0' there is a '\n'.
+ * The new offset_str must be set as NULL, to prepare
+ * the next call get_next_line().
+ * Once the next read returns 0, the offset_str will remain as NULL.
+ * Thus, the gext_first_line will return NULL as well.
+*/
 char	*ft_strdup(char const *s1)
 {
 	int		i;

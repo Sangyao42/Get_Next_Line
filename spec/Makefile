@@ -6,7 +6,7 @@ SRC_DIR = ../src
 SRCS = $(SRC_DIR)/get_next_line.c\
 	   $(SRC_DIR)/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
-BS = 1
+BS = 10
 NAME_BONUS = test_bonus.o
 SRCS_BONUS = $(SRC_DIR)/get_next_line_bonus.c\
 		     $(SRC_DIR)/get_next_line_utils_bonus.c

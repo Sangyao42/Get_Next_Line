@@ -6,17 +6,20 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 22:58:14 by sawang           ###   ########.fr       */
+/*   Updated: 2022/11/24 17:27:58 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+// #include "stdio.h"
+// #include "strings.h"
 
 /**
  * @brief read the files into buffer and
  * join the previous offset_str with buffer, if there is no '\n' in offset_str
  * @details If read() fails, offset_str and buffer should both be freed.
- * If read() returns 0, which means no more bytes is red, break the loop
+ * If read() returns 0, which means no more bytes is red,
+ * buffer will not be changed, then break the loop.
  * and keep offset_str as how it was before.
  * Set buffer[red] = '\0' to set the buffer red as a string
  * for using ft_strjoin().
@@ -76,8 +79,8 @@ static char	*get_first_line(char *offset_str)
  * using a pointer (first set a ptr points to previous offset_str,
  * after ft_strdup(), free the ptr, which frees the previous offset_str).
  * If there is no '\n' in offset_str, which means we reach the last line of
- * the file, thus offset_str should be freed and make offset_str points to nowhere
- * when finishing reading.
+ * the file, thus offset_str should be freed and
+ * make offset_str points to nowhere when finishing reading.
 */
 static char	*get_offset_str(char *offset_str)
 {
