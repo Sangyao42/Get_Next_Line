@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:20:24 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/24 13:12:29 by sawang           ###   ########.fr       */
+/*   Updated: 2023/01/18 19:55:57 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	i;
 	char	*str_join;
+	size_t	s1_len;
 
 	if (!s1)
-	{
-		str_join = ft_strdup(s2);
-		return (str_join);
-	}
-	str_join = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+		return (ft_strdup(s2));
+	s1_len = ft_strlen(s1);
+	str_join = (char *)malloc(s1_len + ft_strlen(s2) + 1);
 	if (!str_join)
 		return (free(s1), NULL);
 	i = 0;
@@ -44,7 +43,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	i = 0;
 	while (s2[i] != '\0')
 	{
-		str_join[ft_strlen(s1) + i] = s2[i];
+		str_join[s1_len + i] = s2[i];
 		i++;
 	}
 	str_join[ft_strlen(s1) + i] = '\0';

@@ -24,17 +24,27 @@ int main(void)
 	// 	return (1);
 	// }
 	// fd = open(argc[1], O_RDONLY);
-	fd = open("test.txt", O_RDONLY);
+	fd = open("julia.fdf", O_RDONLY);
+	// fd = 42;
+	// char *buf = malloc(10*sizeof(char));
+	// if (!buf)
+	// 	return (0);
+	// int testread = read(fd, buf, 9);
+	// *(buf + 10) = '\0';
+	// printf("%d\n", testread);
+	// free(buf);
 	n = 0;
 	printf("fd: %d\n", fd);
 	str = get_next_line(fd);
 	while (str)
 	{
-		printf("the %dth line: %sFINAL\n", (n + 1), str);
+		// printf("the %dth line: %sFINAL\n", (n + 1), str);
 		free(str);
 		str = get_next_line(fd);
 		n++;
 	}
+	// printf("the %dth line: %sFINAL\n", (n + 1), str);
+	// free(str);
 
 /**
  * Testing for bonus part
@@ -72,6 +82,7 @@ int main(void)
 	// ptr = malloc(sizeof(char) * 10);
 	// change(ptr);
 	// printf("PTR = %s\n", ptr);
+	close(fd);
 	return (0);
 }
 
