@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:20:24 by sawang            #+#    #+#             */
-/*   Updated: 2023/01/18 19:55:57 by sawang           ###   ########.fr       */
+/*   Updated: 2023/01/18 20:00:04 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 		str_join[s1_len + i] = s2[i];
 		i++;
 	}
-	str_join[ft_strlen(s1) + i] = '\0';
+	str_join[s1_len + i] = '\0';
 	return (free(s1), str_join);
 }
 
